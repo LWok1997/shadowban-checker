@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xcheckai.online/sitemap.xml
