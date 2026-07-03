@@ -539,7 +539,6 @@ function render(data) {
   updateScore(p, f, n);
   sc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   updateShare(p, f, n, data);
-  updateShare(p, f, n, data);
 }
 
 function updateScore(p, f, n) {
@@ -593,7 +592,9 @@ async function check() {
 }
 
 function updateShare(p, f, n, data) {
+  if (!data || !data.profile) return;
   const ss = document.getElementById('shareSection');
+  if (!ss) return;
   const st = document.getElementById('shareText');
   const tb = document.getElementById('tweetBtn');
   let msg, url = 'https://xcheckai.online';
@@ -602,11 +603,13 @@ function updateShare(p, f, n, data) {
   } else {
     msg = t('shareMsgFail', { name: data.profile.screen_name, f });
   }
-  st.innerHTML = msg;
-  tb.onclick = function() {
-    const tweet = st.textContent.trim() + ' ' + url;
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet), '_blank');
-  };
+  if (st) st.innerHTML = msg;
+  if (tb) {
+    tb.onclick = function() {
+      const tweet = (st ? st.textContent.trim() : '') + ' ' + url;
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet), '_blank');
+    };
+  }
   ss.classList.add('show');
 }
 function copyShareLink() {
