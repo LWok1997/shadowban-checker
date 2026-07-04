@@ -9,7 +9,7 @@ const crypto = require("crypto");
 const url = require("url");
 
 // ── Configuration ──
-const PORT = 3456;
+ const PORT = process.env.PORT || 3456;
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD_HASH = hashPassword("Xcheck2026!");
 const DATA_FILE = path.join(__dirname, "data", "visits.json");
