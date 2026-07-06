@@ -62,7 +62,6 @@
   @keyframes orbFloat { 0%,100%{transform:translate(0,0)scale(1)} 25%{transform:translate(80px,-60px)scale(1.05)} 50%{transform:translate(-40px,80px)scale(.95)} 75%{transform:translate(60px,40px)scale(1.02)} }
   .bg-grid { position: fixed; inset: 0; z-index: 1; background-image: linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none; }
   .container { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
-
   /* ── Lang Toggle ── */
   .lang-toggle { position: relative; z-index: 3; display: flex; justify-content: flex-end; padding: 16px 24px 0; max-width: 720px; margin: 0 auto; }
   .lang-btn {
@@ -76,7 +75,6 @@
   .lang-btn .lang-icon { transition: color 0.3s; }
   .lang-btn .lang-icon.active { color: var(--accent); font-weight: 700; }
   .lang-divider { color: var(--text-dim); }
-
   header { text-align: center; padding: 20px 0 32px; }
   header .logo { display: inline-flex; align-items: center; gap: 12px; font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg,#fff 0%,#a78bfa 50%,#6c5ce7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   header .logo .icon { width: 40px; height: 40px; background: linear-gradient(135deg,#6c5ce7,#a78bfa); border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; -webkit-text-fill-color: white; font-size: 22px; box-shadow: 0 4px 20px var(--accent-glow); }
@@ -176,7 +174,6 @@
   .copy-btn { background:var(--bg-card-hover); color:var(--text); border:1px solid var(--border); }
   .copy-btn:hover { box-shadow:0 4px 16px rgba(255,255,255,0.08); }
   .copy-btn.copied { background:rgba(0,214,143,0.12); color:var(--green); border-color:var(--green); }
-
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 768px) {
     .container { padding: 20px 14px 40px; }
@@ -216,7 +213,6 @@
     header p { font-size: 0.78rem; }
   }
 </style>
-
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496732194077713"
      crossorigin="anonymous"></script><script type="application/ld+json">
 {
@@ -274,7 +270,6 @@
   <div class="orb"></div><div class="orb"></div><div class="orb"></div>
 </div>
 <div class="bg-grid"></div>
-
 <div class="lang-toggle">
   <button id="langBtn" class="lang-btn" title="Switch to English">
     <span class="lang-icon" id="langIconEn">EN</span>
@@ -282,7 +277,6 @@
     <span class="lang-icon" id="langIconZh">中文</span>
   </button>
 </div>
-
 <div class="container">
   <header>
     <div class="logo">
@@ -301,7 +295,6 @@
       <span class="spinner"></span>
     </button>
   </div>
-
   <!-- AD PLACEMENT 1 — 搜索框下方 -->
   <div class="ad-container">
     <!-- 广告位 1 -->
@@ -334,7 +327,6 @@
     <div class="score-label" id="scoreLabel"></div>
     <div class="score-desc" id="scoreDesc"></div>
   </div>
-
   
   <!-- Share -->
   <div class="share-section" id="shareSection">
@@ -386,10 +378,8 @@
       <div class="info-body" data-i18n="faq5b">检测平台是否在限制你回复的传播范围 — 例如回复被排到评论区底部，或需要点击"显示更多回复"才能看到。<strong>失败</strong> 表示你的互动被人工压制了。</div>
     </div>
   </div>
-
   <footer><span data-i18n="footer">数据来源 <a href="https://shadowban-api.yuzurisa.com" target="_blank" rel="noopener">Shadowban API</a> &mdash; 仅供参考。</span></footer>
 </div>
-
 <script>
 // ═══════════════════════════════════════════
 //  i18n — Internationalization
@@ -444,9 +434,9 @@ const LANG = {
     sc_allClear: 'All Clear',
     sc_minor: 'Minor Restrictions',
     sc_detected: 'Shadowban Detected',
-    sc_allPass: 'No shadowban detected. All {n} checks passed.',
-    sc_someFail: '{f} of {n} checks detected restriction{s}. Monitor your account.',
-    sc_manyFail: '{f} of {n} checks indicate shadowbanning. Your account visibility is being restricted.',
+    sc_allPass: 'Your account looks clean.'
+    sc_someFail: 'Some restrictions detected. Not all checks passed.'
+    sc_manyFail: 'Shadowban likely. Multiple restrictions found.'
     badge_protected: 'Protected',
     badge_suspended: 'Suspended',
     badge_noTweets: 'No Tweets',
@@ -456,8 +446,8 @@ const LANG = {
     shareTweet: 'Share on X',
     shareCopy: 'Copy link',
     shareCopied: 'Copied!',
-    shareMsgOk: 'Checked @{name} with Shadowban Checker. All clear!',
-    shareMsgFail: 'Checked @{name} with Shadowban Checker. {f} issue(s) found.',
+    shareMsgOk: 'Checked @{name} - Shadowban Score: 100/100. All clear!',
+    shareMsgFail: 'Checked @{name} - Shadowban Score: {s}/100. {f} issue(s) found.',
   },
   zh: {
     title: 'X 账号阴影检测',
@@ -508,9 +498,9 @@ const LANG = {
     sc_allClear: '一切正常',
     sc_minor: '轻微限制',
     sc_detected: '检测到阴影限制',
-    sc_allPass: '未检测到阴影限制。全部 {n} 项检测通过。',
-    sc_someFail: '{f}/{n} 项检测发现限制。建议关注你的账号状态。',
-    sc_manyFail: '{f}/{n} 项检测表明存在阴影限制。你的账号可见性正在被限制。',
+    sc_allPass: '你的账号一切正常。'
+    sc_someFail: '检测到部分限制，建议关注账号状态。'
+    sc_manyFail: '很可能被限制，你的账号可见性正在被限制。'
     badge_protected: '已保护',
     badge_suspended: '已封禁',
     badge_noTweets: '无推文',
@@ -520,14 +510,12 @@ const LANG = {
     shareTweet: '分享到 X',
     shareCopy: '复制链接',
     shareCopied: '已复制！',
-    shareMsgOk: '刚检测了 @{name} 的 X 账号，一切正常！你也来试试',
-    shareMsgFail: '刚检测了 @{name} 的 X 账号，发现 {f} 项限制。你也来试试',
+    shareMsgOk: '刚检测了 @{name} - 评分 100/100，一切正常！',
+    shareMsgFail: '刚检测了 @{name} - 评分 {s}/100，发现 {f} 项限制。',
   }
 };
-
 let currentLang = localStorage.getItem('sb_lang') || 'en';
 document.documentElement.lang = currentLang;
-
 function t(key, params) {
   let v = (LANG[currentLang] && LANG[currentLang][key]) || LANG.en[key] || key;
   if (params) {
@@ -535,7 +523,6 @@ function t(key, params) {
   }
   return v;
 }
-
 function applyLang() {
   // data-i18n: innerHTML translation
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -555,14 +542,12 @@ function applyLang() {
     render(window._lastData);
   }
 }
-
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'zh' : 'en';
   document.documentElement.lang = currentLang;
   localStorage.setItem('sb_lang', currentLang);
   applyLang();
 }
-
 // ═══════════════════════════════════════════
 //  App
 // ═══════════════════════════════════════════
@@ -572,17 +557,14 @@ const sn = $('screenName'), btn = $('checkBtn');
 const errBox = $('errorBox'), errText = $('errorText');
 const pCard = $('profileCard'), av = $('avatar'), dn = $('displayName'), badges = $('statusBadges');
 const res = $('results'), sc = $('scoreCard'), sr = $('scoreRing'), sv = $('scoreValue'), sl = $('scoreLabel'), sd = $('scoreDesc');
-
 function load(v) { btn.classList.toggle('loading', v); btn.disabled = v; sn.disabled = v; }
 function eShow(m) { errText.innerHTML = m; errBox.classList.add('show'); pCard.classList.remove('show'); res.classList.remove('show'); res.innerHTML = ''; sc.classList.remove('show'); }
 function eHide() { errBox.classList.remove('show'); }
-
 function iVal(field, value) {
   if (field === 'search') return (value === true || value === '_implied_good') ? 'pass' : value === false ? 'fail' : 'warn';
   if (field === 'typeahead') return value === true ? 'pass' : value === false ? 'fail' : 'warn';
   return 'neutral';
 }
-
 function render(data) {
   const tests = data.tests;
   if (!tests) return;
@@ -592,37 +574,38 @@ function render(data) {
   const sS = iVal('search', tests.search); n++; if (sS === 'pass') p++; else if (sS === 'fail') f++;
   const gB = tests.ghost && tests.ghost.ban; const gS = gB ? 'fail' : 'pass'; n++; if (gS === 'pass') p++; else if (gS === 'fail') f++;
   const mB = tests.more_replies && tests.more_replies.ban; const mS = mB ? 'fail' : 'pass'; n++; if (mS === 'pass') p++; else if (mS === 'fail') f++;
-
   addR('person_search', tS, t('r_typeahead'), tagT(tS), descT(tS, tests.typeahead));
   addR('search', sS, t('r_search'), tagS(sS), descS(sS, tests.search));
   addR('visibility_off', gS, t('r_ghost'), tagG(gS), descG(gS, tests.ghost));
   addR('reply', mS, t('r_reply'), tagM(mS), descM(mS, tests.more_replies));
-
   res.classList.add('show'); sc.classList.add('show');
   updateScore(p, f, n);
   sc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   updateShare(p, f, n, data);
 }
-
 function updateScore(p, f, n) {
-  if (f === 0) {
-    sr.style.setProperty('--score-deg', '360deg'); sr.className = 'score-ring all-clear'; sv.textContent = '\u2713';
-    sl.textContent = t('sc_allClear'); sd.textContent = t('sc_allPass', { n });
-  } else if (f <= 1) {
-    const deg = (p / n) * 360; sr.style.setProperty('--score-deg', deg + 'deg'); sr.className = 'score-ring partial';
-    sv.textContent = f; sl.textContent = t('sc_minor'); sd.textContent = t('sc_someFail', { f, n, s: f > 1 ? 's' : '' });
+  var score = Math.round((p / n) * 100);
+  var deg = (score / 100) * 360;
+  sr.style.setProperty('--score-deg', deg + 'deg');
+  sv.textContent = score;
+  if (score === 100) {
+    sr.className = 'score-ring all-clear';
+    sl.textContent = t('sc_allClear');
+    sd.textContent = t('sc_allPass');
+  } else if (score >= 50) {
+    sr.className = 'score-ring partial';
+    sl.textContent = t('sc_minor');
+    sd.textContent = t('sc_someFail');
   } else {
-    const deg = (p / n) * 360; sr.style.setProperty('--score-deg', deg + 'deg'); sr.className = 'score-ring concern';
-    sv.textContent = f; sl.textContent = t('sc_detected'); sd.textContent = t('sc_manyFail', { f, n });
+    sr.className = 'score-ring concern';
+    sl.textContent = t('sc_detected');
+    sd.textContent = t('sc_manyFail');
   }
-}
-
 function addR(ic, st, ti, tag, de) {
   const d = document.createElement('div'); d.className = 'result-card';
   d.innerHTML = '<div class="icon-wrap ' + st + '"><span class="material-icons">' + ic + '</span></div><div class="body"><div class="title">' + ti + tag + '</div><div class="desc">' + de + '</div></div>';
   res.appendChild(d);
 }
-
 function tagT(s) { return s === 'pass' ? '<span class="tag tag-pass">' + t('tag_found') + '</span>' : s === 'fail' ? '<span class="tag tag-fail">' + t('tag_notFound') + '</span>' : '<span class="tag tag-warn">' + t('tag_unknown') + '</span>'; }
 function descT(s, v) { return s === 'pass' ? t('d_typeahead_pass') : s === 'fail' ? t('d_typeahead_fail') : t('d_unexpected', { val: JSON.stringify(v) }); }
 function tagS(s) { return s === 'pass' ? '<span class="tag tag-pass">' + t('tag_visible') + '</span>' : s === 'fail' ? '<span class="tag tag-fail">' + t('tag_hidden') + '</span>' : '<span class="tag tag-warn">' + t('tag_unknown') + '</span>'; }
@@ -631,7 +614,6 @@ function tagG(s) { return s === 'pass' ? '<span class="tag tag-pass">' + t('tag_
 function descG(s) { return s === 'pass' ? t('d_ghost_pass') : t('d_ghost_fail'); }
 function tagM(s) { return s === 'pass' ? '<span class="tag tag-pass">' + t('tag_ok') + '</span>' : '<span class="tag tag-fail">' + t('tag_suppressed') + '</span>'; }
 function descM(s) { return s === 'pass' ? t('d_reply_pass') : t('d_reply_fail'); }
-
 async function check() {
   const raw = sn.value.trim();
   if (!raw) { eShow(t('j_enterUser')); sn.focus(); return; }
@@ -653,18 +635,17 @@ async function check() {
   } catch (err) { eShow(err.message || t('j_failErr')); }
   finally { load(false); }
 }
-
 function updateShare(p, f, n, data) {
   if (!data || !data.profile) return;
   const ss = document.getElementById('shareSection');
   if (!ss) return;
   const st = document.getElementById('shareText');
   const tb = document.getElementById('tweetBtn');
-  let msg, url = 'https://xcheckai.online';
+  let msg, score = Math.round((p / n) * 100), url = 'https://xcheckai.online';
   if (f === 0) {
-    msg = t('shareMsgOk', { name: data.profile.screen_name });
+        msg = t('shareMsgOk', { name: data.profile.screen_name });
   } else {
-    msg = t('shareMsgFail', { name: data.profile.screen_name, f });
+        msg = t('shareMsgFail', { name: data.profile.screen_name, s: score, f: f });
   }
   if (st) st.innerHTML = msg;
   if (tb) {
@@ -685,15 +666,12 @@ function copyShareLink() {
     setTimeout(() => { cb.classList.remove('copied'); spans[spans.length-1].textContent = orig; }, 2000);
   });
 }
-
 // ── Events ──
 btn.addEventListener('click', check);
 sn.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
 document.getElementById('langBtn').addEventListener('click', toggleLang);
-
 // ── Init ──
 applyLang();
 </script>
 <!-- Visit Tracker --><script src="https://api.xcheckai.online/tracker.js"></script></body>
 </html>
-
